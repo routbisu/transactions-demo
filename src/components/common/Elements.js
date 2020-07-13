@@ -15,3 +15,8 @@ export const Page = styled.div`
   margin: auto;
   padding: 30px 15px;
 `;
+
+export const PageContent = styled.div`
+  margin-top: 20px;
+  padding: 15px;
+`;

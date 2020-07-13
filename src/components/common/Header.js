@@ -45,16 +45,18 @@ const ArrowHolder = styled.div`
   }
 `;
 
-const Header = ({ heading, description }) => {
+const Header = ({ heading, description, backLink }) => {
   return (
     <HeaderContainer>
       <HeaderText>
         <H1>{heading}</H1>
         {description && <HeaderDescription>{description}</HeaderDescription>}
       </HeaderText>
-      <ArrowHolder>
-        <span>←</span>Back
-      </ArrowHolder>
+      {backLink && (
+        <ArrowHolder>
+          <span>←</span>Back
+        </ArrowHolder>
+      )}
     </HeaderContainer>
   );
 };
@@ -62,6 +64,7 @@ const Header = ({ heading, description }) => {
 Header.propTypes = {
   heading: PropTypes.string.isRequired,
   description: PropTypes.string,
+  backLink: PropTypes.string,
 };
 
 export default Header;
