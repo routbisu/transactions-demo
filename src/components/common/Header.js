@@ -21,15 +21,27 @@ const HeaderDescription = styled.div`
 `;
 
 const ArrowHolder = styled.div`
-  font-size: 1.5rem;
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.secondary};
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.07rem;
+  text-transform: uppercase;
   span {
-    font-size: 0.9rem;
-    text-transform: uppercase;
+    font-size: 1.5rem;
     padding: 5px;
-    color: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.primary};
+    position: relative;
+    left: 0px;
+    transition: 0.3s ease-in-out;
+  }
+  &:hover {
+    span {
+      left: -4px;
+      transition: 0.3s ease-in-out;
+    }
   }
 `;
 
@@ -41,7 +53,7 @@ const Header = ({ heading, description }) => {
         {description && <HeaderDescription>{description}</HeaderDescription>}
       </HeaderText>
       <ArrowHolder>
-        ← <span>Back</span>
+        <span>←</span>Back
       </ArrowHolder>
     </HeaderContainer>
   );
