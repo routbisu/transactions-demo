@@ -1,0 +1,13 @@
+@import './reset.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.main-container {
+  width: 1000px;
+  margin: auto;
+  padding: 15px;
+}
