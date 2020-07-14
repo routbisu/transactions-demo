@@ -19,6 +19,9 @@ const HeaderDescription = styled.div`
   margin-top: 10px;
   font-size: 1.05rem;
   font-weight: 300;
+  @media screen and (max-width: 500px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const ArrowHolder = styled.div`

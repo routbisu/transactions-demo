@@ -5,6 +5,7 @@ import SimpleTable from '../common/SimpleTable';
 import { getAllAccounts } from '../../services/accountsService';
 import { withRouter } from 'react-router-dom';
 import { maskString } from '../../services/utils';
+import ContentLoader from '../common/ContentLoader';
 
 const headerConfig = [
   {
@@ -29,8 +30,11 @@ const Accounts = ({ history }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const accounts = getAllAccounts();
-    setData(accounts);
+    // To emulate a network call (added a delay of 1.1s)
+    setTimeout(async () => {
+      const accounts = getAllAccounts();
+      setData(accounts);
+    }, 1100);
   }, []);
 
   const clickHandler = (id, account) => {
@@ -45,7 +49,7 @@ const Accounts = ({ history }) => {
         description="Summary of all accounts"
       />
       <PageContent>
-        {data && (
+        {data ? (
           <SimpleTable
             data={data}
             idField="id"
@@ -55,6 +59,8 @@ const Accounts = ({ history }) => {
               `${rec.account_name} - ${maskString(rec.account_number)}`
             }
           />
+        ) : (
+          <ContentLoader rows={4} cols={4} />
         )}
       </PageContent>
     </Page>

@@ -4,6 +4,7 @@ import Header from '../common/Header';
 import { withRouter } from 'react-router-dom';
 import { getTransactions } from '../../services/accountsService';
 import SimpleTable from '../common/SimpleTable';
+import ContentLoader from '../common/ContentLoader';
 
 const headerConfig = [
   {
@@ -27,8 +28,11 @@ const Transactions = ({ match }) => {
   useEffect(() => {
     (async () => {
       if (match?.params?.id) {
-        const transactions = await getTransactions(match?.params?.id);
-        setData(transactions);
+        // To emulate a network call (added a delay of 1.1s)
+        setTimeout(async () => {
+          const transactions = await getTransactions(match?.params?.id);
+          setData(transactions);
+        }, 1100);
       }
     })();
   }, []);
@@ -46,13 +50,15 @@ const Transactions = ({ match }) => {
         description={match?.params?.account}
       />
       <PageContent>
-        {data && (
+        {data ? (
           <SimpleTable
             headers={headerConfig}
             data={data}
             idField="id"
             onClick={clickHandler}
           />
+        ) : (
+          <ContentLoader rows={10} cols={3} />
         )}
       </PageContent>
     </Page>
