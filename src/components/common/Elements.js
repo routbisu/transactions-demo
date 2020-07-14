@@ -8,6 +8,9 @@ export const H1 = styled.h1`
   letter-spacing: 0.06rem;
   padding-left: 12px;
   border-left: 12px solid ${(props) => props.theme.colors.primary};
+  @media screen and (max-width: 500px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const Page = styled.div`

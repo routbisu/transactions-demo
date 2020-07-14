@@ -14,7 +14,7 @@ const App = () => {
           <Route exact path="/">
             <Accounts />
           </Route>
-          <Route exact path="/transactions">
+          <Route exact path="/transactions/:id/:account">
             <Transactions />
           </Route>
         </Router>

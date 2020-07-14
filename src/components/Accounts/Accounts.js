@@ -3,6 +3,8 @@ import { Page, PageContent } from '../common/Elements';
 import Header from '../common/Header';
 import SimpleTable from '../common/SimpleTable';
 import { getAllAccounts } from '../../services/accountsService';
+import { withRouter } from 'react-router-dom';
+import { maskString } from '../../services/utils';
 
 const headerConfig = [
   {
@@ -23,7 +25,7 @@ const headerConfig = [
   },
 ];
 
-const Accounts = () => {
+const Accounts = ({ history }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -31,14 +33,32 @@ const Accounts = () => {
     setData(accounts);
   }, []);
 
+  const clickHandler = (id, account) => {
+    console.log('account', account);
+    history.push(`/transactions/${id}/${account}`);
+  };
+
   return (
     <Page>
-      <Header heading="All Accounts" description="Summary of all accounts" />
+      <Header
+        heading="Accounts Summary"
+        description="Summary of all accounts"
+      />
       <PageContent>
-        {data && <SimpleTable data={data} headers={headerConfig} />}
+        {data && (
+          <SimpleTable
+            data={data}
+            idField="id"
+            onClick={clickHandler}
+            headers={headerConfig}
+            detailsDescription={(rec) =>
+              `${rec.account_name} - ${maskString(rec.account_number)}`
+            }
+          />
+        )}
       </PageContent>
     </Page>
   );
 };
 
-export default Accounts;
+export default withRouter(Accounts);

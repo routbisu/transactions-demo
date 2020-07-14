@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { H1 } from './Elements';
+import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
-  padding-left: 15px;
+  padding: 0px 15px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const HeaderText = styled.div`
@@ -31,7 +32,7 @@ const ArrowHolder = styled.div`
   text-transform: uppercase;
   span {
     font-size: 1.5rem;
-    padding: 5px;
+    padding-right: 5px;
     color: ${(props) => props.theme.colors.primary};
     position: relative;
     left: 0px;
@@ -53,9 +54,11 @@ const Header = ({ heading, description, backLink }) => {
         {description && <HeaderDescription>{description}</HeaderDescription>}
       </HeaderText>
       {backLink && (
-        <ArrowHolder>
-          <span>←</span>Back
-        </ArrowHolder>
+        <Link to={backLink}>
+          <ArrowHolder>
+            <span>←</span>Back
+          </ArrowHolder>
+        </Link>
       )}
     </HeaderContainer>
   );
