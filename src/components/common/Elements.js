@@ -17,6 +17,7 @@ export const Page = styled.div`
   max-width: ${(props) => props.theme.maxPageWidth};
   margin: auto;
   padding: 30px 15px;
+  background: ${(props) => props.theme.colors.white};
 `;
 
 export const PageContent = styled.div`
