@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Page, PageContent } from '../common/Elements';
+import { Page, PageContent, SubTitle } from '../common/Elements';
 import Header from '../common/Header';
 import { withRouter } from 'react-router-dom';
 import { getTransactions } from '../../services/accountsService';
 import SimpleTable from '../common/SimpleTable';
 import ContentLoader from '../common/ContentLoader';
+import TransactionDetails from './TransactionDetails';
 
 const headerConfig = [
   {
@@ -24,6 +25,7 @@ const headerConfig = [
 
 const Transactions = ({ match }) => {
   const [data, setData] = useState(null);
+  const [currentTransaction, setCurrentTransaction] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -35,32 +37,48 @@ const Transactions = ({ match }) => {
         }, 1100);
       }
     })();
-  }, []);
+  }, [match]);
 
   const clickHandler = (id) => {
-    console.log('id', id);
+    // Find transactiond details from transaction id
+    const tranDetails = data.find((rec) => rec.id === id);
+    if (tranDetails) {
+      setCurrentTransaction(tranDetails);
+    }
+  };
+
+  const modalCloseHandler = () => {
+    setCurrentTransaction(false);
   };
 
   return (
     <Page>
       <Header
         heading="Transactions"
-        data={data}
         backLink="/"
         description={match?.params?.account}
       />
       <PageContent>
         {data ? (
-          <SimpleTable
-            headers={headerConfig}
-            data={data}
-            idField="id"
-            onClick={clickHandler}
-          />
+          <>
+            <SimpleTable
+              headers={headerConfig}
+              data={data}
+              idField="id"
+              onClick={clickHandler}
+            />
+            <SubTitle>Click on a record to see transactions details</SubTitle>
+          </>
         ) : (
           <ContentLoader rows={10} cols={3} />
         )}
       </PageContent>
+      {currentTransaction && (
+        <TransactionDetails
+          onClose={modalCloseHandler}
+          data={currentTransaction}
+        />
+      )}
     </Page>
   );
 };

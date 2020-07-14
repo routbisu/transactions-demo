@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Page, PageContent } from '../common/Elements';
+import { Page, PageContent, SubTitle } from '../common/Elements';
 import Header from '../common/Header';
 import SimpleTable from '../common/SimpleTable';
 import { getAllAccounts } from '../../services/accountsService';
@@ -38,7 +38,6 @@ const Accounts = ({ history }) => {
   }, []);
 
   const clickHandler = (id, account) => {
-    console.log('account', account);
     history.push(`/transactions/${id}/${account}`);
   };
 
@@ -50,15 +49,18 @@ const Accounts = ({ history }) => {
       />
       <PageContent>
         {data ? (
-          <SimpleTable
-            data={data}
-            idField="id"
-            onClick={clickHandler}
-            headers={headerConfig}
-            detailsDescription={(rec) =>
-              `${rec.account_name} - ${maskString(rec.account_number)}`
-            }
-          />
+          <>
+            <SimpleTable
+              data={data}
+              idField="id"
+              onClick={clickHandler}
+              headers={headerConfig}
+              detailsDescription={(rec) =>
+                `${rec.account_name} - ${maskString(rec.account_number)}`
+              }
+            />
+            <SubTitle>Click to see transactions</SubTitle>
+          </>
         ) : (
           <ContentLoader rows={4} cols={4} />
         )}

@@ -5,3 +5,17 @@ html {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
 }
+
+.mobile-only {
+  display: inherit;
+  @media screen and (min-width: 501px) {
+    display: none;
+  }
+}
+
+.tablet-and-desktop-only {
+  display: none;
+  @media screen and (min-width: 501px) {
+    display: inherit;
+  }
+}

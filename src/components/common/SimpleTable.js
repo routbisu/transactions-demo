@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { formatDate } from '../../services/utils';
 
 const TableHeader = ({ headers }) =>
   headers && (
@@ -14,7 +14,7 @@ const TableHeader = ({ headers }) =>
     </thead>
   );
 
-const Table = styled.table`
+export const Table = styled.table`
   color: ${(props) => props.theme.colors.secondary};
 
   tbody {
@@ -37,12 +37,17 @@ const Table = styled.table`
     background: ${(props) => props.theme.colors.primary};
     color: ${(props) => props.theme.colors.white};
     border: 1px solid ${(props) => props.theme.colors.white};
+    white-space: nowrap;
   }
 
   td {
     padding: 20px;
     padding: 12px 18px;
     border: 1px solid ${(props) => props.theme.colors.white};
+    font-size: 1rem;
+    line-height: 1.5;
+    white-space: nowrap;
+
     &:not(:first-child) {
       text-align: right;
     }
@@ -83,10 +88,7 @@ const SimpleTable = ({
                 ? headers.map((header, j) => (
                     <td key={j}>
                       {header.type === 'DATE'
-                        ? moment(
-                            record[header['name']],
-                            'YYYY-MM-DDThh:mm:ss'
-                          ).format('DD MMM YYYY, hh:mm A')
+                        ? formatDate(record[header['name']])
                         : record[header['name']]}
                     </td>
                   ))

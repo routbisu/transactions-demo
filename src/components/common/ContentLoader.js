@@ -47,14 +47,14 @@ const ContentLoader = ({ cols = 4, rows = 3 }) => {
     <LoaderContainer>
       <div className="header">
         {[...new Array(cols)].map((_, i) => (
-          <span />
+          <span key={i} />
         ))}
       </div>
 
       {[...new Array(rows)].map((_, i) => (
-        <div className="record">
+        <div className="record" key={i}>
           {[...new Array(cols)].map((_, i) => (
-            <span />
+            <span key={i} />
           ))}
         </div>
       ))}

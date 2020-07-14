@@ -22,4 +22,12 @@ export const Page = styled.div`
 export const PageContent = styled.div`
   margin-top: 20px;
   padding: 15px;
+  overflow-x: auto;
+`;
+
+export const SubTitle = styled.div`
+  font-size: 0.85rem;
+  color: ${(props) => props.theme.colors.lightGrey};
+  margin: 20px 0px;
+  padding-left: 5px;
 `;
