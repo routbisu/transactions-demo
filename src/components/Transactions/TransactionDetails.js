@@ -10,7 +10,7 @@ const TransactionBody = styled.div`
   overflow-x: auto;
 `;
 
-const TransactionDetails = ({ onClose, data }) => {
+export const TransactionDetails = ({ onClose, data }) => {
   const {
     from,
     transaction_date,

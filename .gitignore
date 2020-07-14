@@ -6,3 +6,4 @@ node_modules
 
 # OSX Specific files
 .DS_Store
+coverage

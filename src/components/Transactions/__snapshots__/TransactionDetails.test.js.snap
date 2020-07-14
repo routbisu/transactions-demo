@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransactionDetails render correctly with transaction approved 1`] = `ShallowWrapper {}`;
+
+exports[`TransactionDetails render correctly with transaction rejected 1`] = `ShallowWrapper {}`;

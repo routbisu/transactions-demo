@@ -60,18 +60,6 @@ const ModalHeader = styled.div`
       transform: rotate(-45deg);
       transition: 0.2s ease-in-out;
     }
-
-    &:hover {
-      &:before {
-        transform: rotate(135deg);
-        transition: 0.2s ease-in-out;
-      }
-
-      &:after {
-        transform: rotate(45deg);
-        transition: 0.2s ease-in-out;
-      }
-    }
   }
 `;
 

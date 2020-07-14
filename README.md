@@ -19,6 +19,19 @@ To deploy the frontend to firebase, please run:
 npm run deploy
 ```
 
+Please run this command to run tests
+
+```bash
+npm run test
+```
+
+### Libs / Tooling used
+
+- React, using react-scripts
+- Styled Components / SASS
+- Unit Testing: Jest / Enzyme
+- TypeScript: not used
+
 ### Mock Data
 
 Mock data location -

@@ -23,7 +23,7 @@ const headerConfig = [
   },
 ];
 
-const Transactions = ({ match }) => {
+export const Transactions = ({ match }) => {
   const [data, setData] = useState(null);
   const [currentTransaction, setCurrentTransaction] = useState(null);
 
